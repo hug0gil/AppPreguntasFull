@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+      "respuestas": ["Marte", "Venus", "Júpiter", "Saturno"],
+      "respuestaCorrecta": "Júpiter"
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuántos continentes hay en el mundo?",
+      "respuestas": ["5", "6", "7", "8"],
+      "respuestaCorrecta": "7"
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Quién escribió 'Don Quijote de la Mancha'?",
+      "respuestas": [
+        "Gabriel García Márquez",
+        "Miguel de Cervantes",
+        "Pablo Neruda",
+        "Lope de Vega"
+      ],
+      "respuestaCorrecta": "Miguel de Cervantes"
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Cuál es el símbolo químico del oro?",
+      "respuestas": ["Au", "Ag", "O", "Fe"],
+      "respuestaCorrecta": "Au"
+    }
+  ]
+  
