@@ -33,7 +33,7 @@ const connectToMongoDB = async () => {
 // Llamada a la función para conectar a MongoDB
 connectToMongoDB();
 
-app.get("/preguntas", async (req, res) => {
+app.get("/categorias", async (req, res) => {
   try {
     const preguntas = await conecction.collection("Preguntas").find().toArray();
     res.json(preguntas);
@@ -45,9 +45,8 @@ app.get("/preguntas", async (req, res) => {
 
 // Endpoint categoría concreta
 
-app.get("/preguntas/:categoria", async (req, res) => {
-  const categoria = req.params;
-
+app.get("/categorias/:categoria", async (req, res) => {
+  const categoria = req.params.categoria.toLowerCase(); // Normalizar a minúsculas
   try {
     const preguntas = await conecction
       .collection("Preguntas")
@@ -65,8 +64,10 @@ app.get("/preguntas/:categoria", async (req, res) => {
   }
 });
 
-app.get("/preguntas/:categoria/:nPreguntas", async (req, res) => {
-  const { categoria, nPreguntas } = req.params; // Obtenemos categoría y número de preguntas desde la ruta
+app.get("/categorias/:categoria/:nPreguntas", async (req, res) => {
+  // Obtenemos categoría y número de preguntas desde la ruta
+  const  categoria = req.params.categoria.toLowerCase();
+  const  nPreguntas = req.params.nPreguntas;
 
   const limite = parseInt(nPreguntas);
   if (isNaN(limite) || limite <= 0) {

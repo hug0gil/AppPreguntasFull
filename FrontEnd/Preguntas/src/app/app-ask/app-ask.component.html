@@ -1,29 +1,27 @@
 <div style="text-align: center;">
-  <br>
-  <button (click)="isHidden()" *ngIf="!visible">Jugar</button>
-  <div *ngIf="visible">
-    @for (pregunta of getPreguntas(); track $index) {
-    <div>
+  @for (pregunta of getPreguntas(); track $index) {
+  <div>
+    <ul>
+      <p>{{ pregunta.pregunta }}</p>
       <ul>
-        <p>{{ pregunta.pregunta }}</p>
-        <ul>
-          <li *ngFor="let respuesta of pregunta.respuestas">{{ respuesta }}</li>
-        </ul>
-        <br />
-        <input type="text" placeholder="Introduce tu respuesta" #respuestaInput />
-        <button (click)="verificarRespuesta(pregunta.pregunta, respuestaInput.value)">
-          Verificar
-        </button>
-        @if (pregunta.resultMessage) {
-        <p [ngClass]="{
+        @for (respuesta of pregunta.respuestas; track $index) {
+        <li>{{ respuesta }}</li>
+        }
+      </ul>
+      <br />
+      <input type="text" placeholder="Introduce tu respuesta" #respuestaInput />
+      <button (click)="verificarRespuesta(pregunta.pregunta, respuestaInput.value)">
+        Verificar
+      </button>
+      @if (pregunta.resultMessage) {
+      <p [ngClass]="{
                 correct: pregunta.resultMessage.includes('Correcto'),
                 incorrect: pregunta.resultMessage.includes('Incorrecto')
               }">
-          {{ pregunta.resultMessage }}
-        </p>
-        }
-      </ul>
-    </div>
-    }
+        {{ pregunta.resultMessage }}
+      </p>
+      }
+    </ul>
   </div>
+  }
 </div>

@@ -1,32 +1,142 @@
 [
-    {
-      "id": 1,
-      "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
-      "respuestas": ["Marte", "Venus", "Júpiter", "Saturno"],
-      "respuestaCorrecta": "Júpiter"
-    },
-    {
-      "id": 2,
-      "pregunta": "¿Cuántos continentes hay en el mundo?",
-      "respuestas": ["5", "6", "7", "8"],
-      "respuestaCorrecta": "7"
-    },
-    {
-      "id": 3,
-      "pregunta": "¿Quién escribió 'Don Quijote de la Mancha'?",
-      "respuestas": [
-        "Gabriel García Márquez",
-        "Miguel de Cervantes",
-        "Pablo Neruda",
-        "Lope de Vega"
-      ],
-      "respuestaCorrecta": "Miguel de Cervantes"
-    },
-    {
-      "id": 4,
-      "pregunta": "¿Cuál es el símbolo químico del oro?",
-      "respuestas": ["Au", "Ag", "O", "Fe"],
-      "respuestaCorrecta": "Au"
-    }
-  ]
-  
+  {
+    "_id": "67993fb6432310ba7c6b20b3",
+    "id": 9,
+    "pregunta": "¿Qué científico propuso la teoría de la relatividad?",
+    "respuestas": [
+      "Isaac Newton",
+      "Nikola Tesla",
+      "Albert Einstein",
+      "Galileo Galilei"
+    ],
+    "respuestaCorrecta": "Albert Einstein",
+    "categoria": "Ciencia",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20ae",
+    "id": 4,
+    "pregunta": "¿Cuál es el símbolo químico del oro?",
+    "respuestas": [
+      "Au",
+      "Ag",
+      "O",
+      "Fe"
+    ],
+    "respuestaCorrecta": "Au",
+    "categoria": "Química",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20b0",
+    "id": 6,
+    "pregunta": "¿Cuál es el idioma más hablado del mundo?",
+    "respuestas": [
+      "Inglés",
+      "Chino mandarín",
+      "Español",
+      "Hindi"
+    ],
+    "respuestaCorrecta": "Chino mandarín",
+    "categoria": "Cultura general",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20ad",
+    "id": 3,
+    "pregunta": "¿Quién escribió 'Don Quijote de la Mancha'?",
+    "respuestas": [
+      "Gabriel García Márquez",
+      "Miguel de Cervantes",
+      "Pablo Neruda",
+      "Lope de Vega"
+    ],
+    "respuestaCorrecta": "Miguel de Cervantes",
+    "categoria": "Literatura",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20af",
+    "id": 5,
+    "pregunta": "¿En qué año llegó el hombre a la luna?",
+    "respuestas": [
+      "1965",
+      "1969",
+      "1971",
+      "1973"
+    ],
+    "respuestaCorrecta": "1969",
+    "categoria": "Historia",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20b2",
+    "id": 8,
+    "pregunta": "¿Cuál es el país con mayor extensión territorial?",
+    "respuestas": [
+      "Canadá",
+      "China",
+      "Rusia",
+      "Estados Unidos"
+    ],
+    "respuestaCorrecta": "Rusia",
+    "categoria": "Geografía",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20b4",
+    "id": 10,
+    "pregunta": "¿Qué artista pintó la obra 'La noche estrellada'?",
+    "respuestas": [
+      "Pablo Picasso",
+      "Claude Monet",
+      "Vincent van Gogh",
+      "Leonardo da Vinci"
+    ],
+    "respuestaCorrecta": "Vincent van Gogh",
+    "categoria": "Arte",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20ab",
+    "id": 1,
+    "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+    "respuestas": [
+      "Marte",
+      "Venus",
+      "Júpiter",
+      "Saturno"
+    ],
+    "respuestaCorrecta": "Júpiter",
+    "categoria": "Ciencia",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20ac",
+    "id": 2,
+    "pregunta": "¿Cuántos continentes hay en el mundo?",
+    "respuestas": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "respuestaCorrecta": "7",
+    "categoria": "Geografía",
+    "resultMessage": ""
+  },
+  {
+    "_id": "67993fb6432310ba7c6b20b1",
+    "id": 7,
+    "pregunta": "¿Cuántos huesos tiene el cuerpo humano adulto?",
+    "respuestas": [
+      "206",
+      "210",
+      "199",
+      "215"
+    ],
+    "respuestaCorrecta": "206",
+    "categoria": "Ciencia",
+    "resultMessage": ""
+  }
+]
