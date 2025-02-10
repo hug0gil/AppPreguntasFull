@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    @for (categoria of getCategorias(); track $index) {
+    @for (categoria of getCategorias() ; track $index) {
         <button (click)="seleccionarCategoria(categoria)">{{categoria}}</button>
         <br>
     }

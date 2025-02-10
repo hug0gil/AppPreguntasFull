@@ -31,7 +31,7 @@ export class AppCategoriesComponent {
   }
 
   getCategorias() {
-    const setCategorias = new Set();
+    const setCategorias = new Set<string>();
     // Agregamos "Todas" primero
     setCategorias.add("Todas");
 
