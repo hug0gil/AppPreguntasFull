@@ -1,56 +1,113 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 10px;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    background: #ffffff;
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 20px;
+}
+
+div {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  font-family: Arial, sans-serif;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+li {
+  background: #f4f4f4;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 300px;
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+}
+
+p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0;
+  font-family: Arial, sans-serif;
+}
+
+.correct {
+  color: green;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+}
+
+.incorrect {
+  color: red;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+}
+
+div > ul {
+  margin-bottom: 20px;
+}
+
+div > ul p {
+  font-size: 20px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+div > ul li {
+  background-color: #f4f4f4;
+  color: #555;
+  font-family: Arial, sans-serif;
+}
+
+input:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+@media (max-width: 600px) {
   input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 200px;
+    width: 90%;
   }
-  
-  p {
-    font-size: 18px;
-    font-weight: bold;
+
+  button {
+    width: 90%;
   }
-  
-  .correct {
-    color: green;
-  }
-  
-  .incorrect {
-    color: red;
-  }
-  
+}

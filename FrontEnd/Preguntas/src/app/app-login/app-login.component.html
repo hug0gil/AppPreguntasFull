@@ -1,0 +1,22 @@
+<div class="login">
+    <h1>Bienvenido!!</h1>
+    <form [formGroup]="form" (ngSubmit)="isValid()">
+        <p>Correo electrónico:</p>
+        <input type="text" formControlName="mail">
+        @if (form.get('mail')?.invalid && form.get('mail')?.touched) {
+        <p ngClass="incorrect">El correo tiene que tener un formato válido
+        </p>
+        }
+        <p>Contraseña:</p>
+        <input type="password" formControlName="password">
+        @if (form.get('password')?.invalid && form.get('password')?.touched) {
+        <p ngClass="incorrect">La contraseña tiene que tener un
+            mínimo de 8 carácteres y un carácter numérico</p>
+        }
+        <br>
+        <br>
+        <button type="submit">
+            Log In
+        </button>
+    </form>
+</div>
