@@ -19,11 +19,9 @@ export class AppCategoriesComponent {
   }
 
   async obtenerPreguntas() {
-    try {
-      this.preguntas = await this.service.getPreguntas();
-    } catch (error) {
-      console.error('Error al obtener las preguntas del backend: ' + error);
-    }
+    this.service.getPreguntas$().subscribe((preguntas) => {
+      this.preguntas = preguntas;
+    });
   }
 
   getPreguntas() {
@@ -33,21 +31,22 @@ export class AppCategoriesComponent {
   getCategorias() {
     const setCategorias = new Set<string>();
     // Agregamos "Todas" primero
-    setCategorias.add("Todas");
+    setCategorias.add('Todas');
 
     // Recorremos las preguntas y extraemos las categorías
     this.getPreguntas().forEach((c) => {
-        if (!c.categoria) return; // Evitamos errores si la categoría es null o undefined
+      if (!c.categoria) return; // Evitamos errores si la categoría es null o undefined
 
-        let categoria = c.categoria.toLowerCase(); // Convertimos a minúsculas
+      let categoria = c.categoria.toLowerCase(); // Convertimos a minúsculas
 
-        if (categoria === 'culturageneral') {
-            setCategorias.add('CulturaGeneral'); // Normalizamos este caso especial
-        } else {
-            // Capitalizamos la primera letra y agregamos al Set
-            let categoriaCapitalizada = categoria.charAt(0).toUpperCase() + categoria.slice(1);
-            setCategorias.add(categoriaCapitalizada);
-        }
+      if (categoria === 'culturageneral') {
+        setCategorias.add('CulturaGeneral'); // Normalizamos este caso especial
+      } else {
+        // Capitalizamos la primera letra y agregamos al Set
+        let categoriaCapitalizada =
+          categoria.charAt(0).toUpperCase() + categoria.slice(1);
+        setCategorias.add(categoriaCapitalizada);
+      }
     });
 
     console.log(setCategorias);

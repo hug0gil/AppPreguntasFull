@@ -23,38 +23,30 @@ const askSchema = new mongoose.Schema({
   }
 });
 
-// Método estático para encontrar preguntas por categoría
-askSchema.statics.findByCategory = async function(categoria) {
-  const preguntas = await this.find({ categoria });
-
-  if (!preguntas || preguntas.length === 0) {
-    throw new Error('No questions found for this category');
-  }
-
-  return preguntas;
+// Método estático para encontrar todas las preguntas
+askSchema.statics.findAllQuestions = async function() {
+  return await this.find();
 };
 
-// Método estático para verificar si una respuesta es correcta
-askSchema.statics.verifyAnswer = async function(preguntaId, respuesta) {
-  const pregunta = await this.findById(preguntaId);
+// Método estático para encontrar preguntas por categoría
+askSchema.statics.findQuestionsByCategory = async function(categoria) {
+  return await this.find({ categoria: categoria.toLowerCase() });
+};
 
-  if (!pregunta) {
-    throw new Error('Pregunta no encontrada');
-  }
-
-  const isCorrect = pregunta.respuestaCorrecta.toLowerCase() === respuesta.toLowerCase();
-  return isCorrect;
+// Método estático para encontrar preguntas de una categoría y limitar la cantidad
+askSchema.statics.findQuestionsByCategoryLimit = async function(categoria, nPreguntas) {
+  return await this.find({ categoria: categoria.toLowerCase() }).limit(nPreguntas);
 };
 
 // Pre-hook para manipular la pregunta antes de guardarla (si es necesario)
 askSchema.pre('save', async function(next) {
   const pregunta = this;
-  // Puedes añadir lógica aquí antes de guardar (por ejemplo, validaciones adicionales)
+  // Aquí puedes agregar lógica adicional si fuera necesario
   
   next();
 });
 
 // Modelo de la pregunta (ask)
-const Ask = mongoose.model('Ask', askSchema);
+const Ask = mongoose.model('Ask', askSchema, 'Preguntas');
 
 module.exports = Ask;

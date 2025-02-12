@@ -3,12 +3,20 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+/*
+mongoose: Se usa para interactuar con MongoDB. Proporciona herramientas para definir 
+esquemas y modelos de datos, que se guardan en la base de datos.
+
+validator: Es una librería útil para realizar validaciones, en este caso, 
+para validar que el email tenga un formato correcto.
+
+bcryptjs: Se usa para encriptar las contraseñas de los usuarios antes de guardarlas en la base de datos.
+
+jsonwebtoken (jwt): Se utiliza para generar y verificar tokens JWT (JSON Web Tokens),
+que se usarán para autenticar a los usuarios en tu aplicación.
+*/
+
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
     email: {
         type: String,
         unique: true,
@@ -32,15 +40,6 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
-    age: {
-        type: Number,
-        default: 0,
-        validate(value) {
-            if (value < 0) {
-                throw new Error('Age must be a postive number')
-            }
-        }
-    },
     tokens: [{
         token: {
             type: String,
@@ -50,12 +49,18 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.methods.generateAuthToken = async function () {
-    const user = this
+    const user = this //Ese user en la BDD
+
+    // Generamos un token JWT usando el _id del usuario
     const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
 
+    // Añadimos el token generado al array de tokens del usuario
     user.tokens = user.tokens.concat({ token })
+
+    // Guardamos el documento del usuario con el nuevo token
     await user.save()
 
+    // Devolvemos el token generado
     return token
 }
 
@@ -86,6 +91,6 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema, 'Usuarios')
 
 module.exports = User
