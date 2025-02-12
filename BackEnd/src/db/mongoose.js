@@ -1,15 +1,23 @@
 const mongoose = require("mongoose");
+const { CONNECTIONURL } = require("../config/config");
 
+let connection = null; // Variable para almacenar la conexión
 
-// Función para conectar a MongoDB
-const connectToMongoDB = async () => {
+async function connectToMongoDB() {
   try {
-    // Conexión a MongoDB usando mongoose
-    await mongoose.connect(connectionURL)
-    console.log("Conexión exitosa a MongoDB");
+    if (!connection) {
+      await mongoose.connect(CONNECTIONURL);
+      connection = mongoose.connection; // Asigna la conexión
+      console.log("✅ Conectado a MongoDB");
+    }
   } catch (error) {
-    console.error("Error al conectar con MongoDB:", error.message);
+    console.error("❌ Error conectando a MongoDB:", error.message);
+    process.exit(1);
   }
-};
-// Llamamos a la función para conectar
-connectToMongoDB();
+}
+
+function getConnection() {
+  return connection;
+}
+
+module.exports = { connectToMongoDB, getConnection };

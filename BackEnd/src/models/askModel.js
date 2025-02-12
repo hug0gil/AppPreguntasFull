@@ -49,7 +49,6 @@ askSchema.statics.verifyAnswer = async function(preguntaId, respuesta) {
 // Pre-hook para manipular la pregunta antes de guardarla (si es necesario)
 askSchema.pre('save', async function(next) {
   const pregunta = this;
-
   // Puedes añadir lógica aquí antes de guardar (por ejemplo, validaciones adicionales)
   
   next();

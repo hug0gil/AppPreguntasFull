@@ -2,9 +2,10 @@
   @for (pregunta of getPreguntas(); track $index) {
   <div>
     <ul>
-      <p>{{ pregunta.pregunta }}</p>
+      <p>{{($index+1)+": "+ pregunta.pregunta }}</p>
       <ul>
         @for (respuesta of pregunta.respuestas; track $index) {
+        <br>
         <li>{{ respuesta }}</li>
         }
       </ul>
@@ -15,9 +16,10 @@
       </button>
       @if (pregunta.resultMessage) {
       <p [ngClass]="{
-                correct: pregunta.resultMessage.includes('Correcto'),
-                incorrect: pregunta.resultMessage.includes('Incorrecto')
-              }">
+        correct: pregunta.resultMessage === ('¡Correcto! Has acertado.'),
+        incorrect: pregunta.resultMessage === ('Incorrecto. La respuesta correcta es: ' +
+        pregunta.respuestaCorrecta)
+      }">
         {{ pregunta.resultMessage }}
       </p>
       }
