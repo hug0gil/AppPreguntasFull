@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AskService } from '../../Services/ask.service';
 import { Router } from '@angular/router';
+import { Pregunta } from '../../models/pregunta';
 
 @Component({
   selector: 'app-categories',
@@ -11,16 +12,17 @@ import { Router } from '@angular/router';
 })
 export class AppCategoriesComponent {
   private service = inject(AskService);
-  private preguntas: any[] = [];
+  private preguntas: String[] = [];
   private router = inject(Router);
 
   ngOnInit() {
     this.obtenerPreguntas();
   }
 
-  async obtenerPreguntas() {
-    this.service.getPreguntas$().subscribe((preguntas) => {
-      this.preguntas = preguntas;
+  obtenerPreguntas() {
+    this.service.getPreguntas$().subscribe((preguntasRes) => {
+      this.preguntas = preguntasRes.map( pregunta => pregunta.categoria);
+      console.log(this.preguntas)
     });
   }
 
@@ -35,9 +37,9 @@ export class AppCategoriesComponent {
 
     // Recorremos las preguntas y extraemos las categorías
     this.getPreguntas().forEach((c) => {
-      if (!c.categoria) return; // Evitamos errores si la categoría es null o undefined
+      if (!c) return; // Evitamos errores si la categoría es null o undefined
 
-      let categoria = c.categoria.toLowerCase(); // Convertimos a minúsculas
+      let categoria = c.toLowerCase(); // Convertimos a minúsculas
 
       if (categoria === 'culturageneral') {
         setCategorias.add('CulturaGeneral'); // Normalizamos este caso especial
@@ -49,7 +51,6 @@ export class AppCategoriesComponent {
       }
     });
 
-    console.log(setCategorias);
     return Array.from(setCategorias); // Convertimos el Set a un Array
   }
 

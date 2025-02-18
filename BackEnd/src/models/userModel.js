@@ -52,7 +52,7 @@ userSchema.methods.generateAuthToken = async function () {
     const user = this //Ese user en la BDD
 
     // Generamos un token JWT usando el _id del usuario
-    const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
+    const token = jwt.sign({ _id: user._id.toString() }, process.env.SECRET)
 
     // Añadimos el token generado al array de tokens del usuario
     user.tokens = user.tokens.concat({ token })
