@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const cors = require("cors");
 const config = require("./config/config"); // Importar la configuración
 const { PORT } = require("./config/config");
@@ -14,17 +14,13 @@ app.use(express.json());
 
 const port = config.PORT || 3000
 
-async function startServer() {  
-  app.use('/', askRouter);  // Rutas de preguntas
-  app.use('/', userRouter);  // Rutas de usuarios
+app.use('/', askRouter);  // Rutas de preguntas
+app.use('/', userRouter);  // Rutas de usuarios
 
-  app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('🚀 ¡Servidor funcionando correctamente!');
-  });
+});
   
-  app.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${port}`);
-  });
-}
-
-startServer(); // Llamamos a la función para iniciar el servidor
+});
