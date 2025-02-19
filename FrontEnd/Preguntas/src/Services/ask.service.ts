@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
-import axios from 'axios'; // Importamos axios
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, from, tap } from 'rxjs';
 import { Pregunta } from '../models/pregunta';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class AskService {
   private url = 'http://127.0.0.1:3000/'; // URL base de petición del BackEnd
+
+  private http = inject(HttpClient);
+
   private preguntasSubject: BehaviorSubject<Pregunta[]> = new BehaviorSubject<
     Pregunta[]
   >([]);
@@ -20,9 +24,9 @@ export class AskService {
   // Función que obtiene todas las preguntas
   getPreguntas() {
     try {
-      from(axios.get(this.url + 'categorias')).subscribe((res) =>
-        this.preguntasSubject.next(res.data)
-      );
+      this.http
+        .get<Pregunta[]>(this.url + 'categorias')
+        .subscribe((res) => this.preguntasSubject.next(res));
     } catch (e) {
       console.log(
         'Error a la hora de la obtención de preguntas con limite y categoria concreta mediante observables: ' +
@@ -34,9 +38,9 @@ export class AskService {
   // Función que obtiene preguntas por categoría
   getPreguntasCategoria(categoria: string) {
     try {
-      from(axios.get(this.url + 'categorias' + '/' + categoria)).subscribe(
-        (res) => this.preguntasSubject.next(res.data)
-      );
+      this.http
+        .get<Pregunta[]>(this.url + 'categorias' + '/' + categoria)
+        .subscribe((res) => this.preguntasSubject.next(res));
     } catch (e) {
       console.log(
         'Error a la hora de la obtención de preguntas con limite y categoria concreta mediante observables: ' +
@@ -48,9 +52,11 @@ export class AskService {
   // Función que obtiene un número específico de preguntas por categoría
   getPreguntasCategoriaNumeroP(categoria: string, nPreguntas: number) {
     try {
-      from(
-        axios.get(this.url + 'categorias' + '/' + categoria + '/' + nPreguntas)
-      ).subscribe((res) => this.preguntasSubject.next(res.data));
+      this.http
+        .get<Pregunta[]>(
+          this.url + 'categorias' + '/' + categoria + '/' + nPreguntas
+        )
+        .subscribe((res) => this.preguntasSubject.next(res));
     } catch (e) {
       console.log(
         'Error a la hora de la obtención de preguntas con limite y categoria concreta mediante observables: ' +
